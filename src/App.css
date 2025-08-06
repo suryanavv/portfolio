@@ -24,8 +24,17 @@
     animation: bounce-once 0.5s ease-in-out;
   }
   
-  .animate-wiggle {
-    animation: wiggle 0.4s ease-in-out infinite;
+  .animate-shake {
+    animation: shake 0.4s ease-in-out infinite;
+  }
+
+  
+  
+  @media (min-width: 768px) {
+    
+    .md\:hover\:animate-shake:hover {
+      animation: shake 0.4s ease-in-out infinite;
+    }
   }
   
   .animate-slide-in {
@@ -37,10 +46,12 @@
     50% { transform: translateY(-4px); }
   }
   
-  @keyframes wiggle {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-2px); }
-    75% { transform: translateX(2px); }
+  @keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(10deg); }
+    40% { transform: rotate(-10deg); }
+    60% { transform: rotate(10deg); }
+    80% { transform: rotate(-10deg); }
   }
   
   @keyframes slide-in {

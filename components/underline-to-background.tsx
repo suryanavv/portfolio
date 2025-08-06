@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { useEffect, useMemo, useRef } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import type { ElementType } from "react"
 import { motion } from "motion/react"
 import type { ValueAnimationTransition } from "motion/react"
@@ -60,6 +60,7 @@ const UnderlineToBackground = ({
   ...props
 }: UnderlineProps) => {
   const textRef = useRef<HTMLSpanElement>(null)
+  const [isActive, setIsActive] = useState(false)
 
   // Create custom motion component based on the 'as' prop
   const MotionComponent = useMemo(() => motion.create(as ?? "span"), [as])
@@ -110,10 +111,27 @@ const UnderlineToBackground = ({
     },
   }
 
+  // Touch event handlers for mobile devices
+  const handleTouchStart = () => {
+    setIsActive(true)
+  }
+
+  const handleTouchEnd = () => {
+    setIsActive(false)
+  }
+
+  const handleTouchCancel = () => {
+    setIsActive(false)
+  }
+
   return (
     <MotionComponent
       className={cn("relative inline-block cursor-pointer", className)}
       whileHover="target"
+      animate={isActive ? "target" : "initial"}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchCancel}
       ref={textRef}
       {...props}
     >

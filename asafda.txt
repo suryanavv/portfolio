@@ -132,7 +132,7 @@ function App() {
       </div>
 
       {/* Intro Text */}
-      <motion.div className="mb-2 text-gray-800 text-base font-light flex items-center gap-2" variants={itemVariants}>
+      <motion.div className=" text-gray-800 text-base font-light flex items-center gap-2" variants={itemVariants}>
         <img
           src={Hello || "/placeholder.svg"}
           alt="Hello"
@@ -142,10 +142,10 @@ function App() {
       </motion.div>
 
       <motion.header className="mb-8" variants={itemVariants}>
-        <h1 className="text-xl font-medium">
+        {/* <div> */}
           <span className="inline-flex items-center">
             <UnderlineToBackground targetTextColor="#f0f0f0" className="cursor-pointer" as="span">
-              <span className="mx-1">
+              <span className="mx-0 md:mx-1">
                 <TextShimmer
                   duration={1.2}
                   className="text-xl font-medium [--base-color:var(--color-blue-600)] [--base-gradient-color:var(--color-blue-200)] dark:[--base-color:var(--color-blue-700)] dark:[--base-gradient-color:var(--color-blue-400)]"
@@ -156,16 +156,16 @@ function App() {
             </UnderlineToBackground>
           </span>
           <span className="font-light text-gray-500"> — </span>
-          <span className="font-light text-gray-500 tracking-tight hover:tracking-wider transition-all duration-300">
+          <span className="text-lg font-light text-gray-500 tracking-tight md:hover:tracking-wider transition-all duration-300">
             {" "}
             Front End Developer
             <img
               src={ScaleBrush || "/placeholder.svg"}
               alt="ScaleBrush"
-              className="inline w-6 h-6 ml-2 mb-1 transform hover:scale-125 hover:rotate-12 hover:animate-wiggle transition-transform duration-300"
+              className="inline w-5 h-5 ml-2 mb-1 transform hover:scale-125 hover:rotate-12 hover:animate-wiggle transition-transform duration-300"
             />
           </span>
-        </h1>
+        {/* </div> */}
         <p className="text-gray-500 mt-2 hover:text-gray-700 transition-colors duration-300">
           Creating clean, minimal interfaces and web experiences.
         </p>
