@@ -6,6 +6,9 @@ import ScaleBrush from './assets/scale-brush.svg';
 import Pen from './assets/pen.svg';
 import Project from './assets/project.svg';
 import Link from './assets/link.svg';
+import Hello from './assets/hello.svg';
+import LinkedIn from './assets/linkedin.svg';
+import GitHub from './assets/github.svg';
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -68,23 +71,29 @@ function App() {
       {/* Geometric Shapes */}
       <div className="flex mb-4">
         {/* Rounded Square */}
-        <div className="w-4 h-4 bg-black rounded-xs mr-0.5"></div>
+        <div className="w-4 h-4 bg-black rounded-xs mr-0.5 animate-bounce-once"></div>
 
         {/* Circle */}
-        <div className="w-4 h-4 bg-black rounded-full"></div>
+        <div className="w-4 h-4 bg-black rounded-full animate-bounce-once" style={{ animationDelay: '0.1s' }}></div>
 
         {/* Triangle */}
-        <div className="w-4 h-4 bg-black" style={{
-          clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'
+        <div className="w-4 h-4 bg-black animate-bounce-once" style={{
+          clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
+          animationDelay: '0.2s'
         }}></div>
       </div>
 
       {/* Intro Text */}
-      <div className="mb-2 text-gray-800 text-base font-light animate-fade-in">
-        Hello there, This is
+      <div className="mb-2 text-gray-800 text-base font-light flex items-center gap-2 animate-slide-in">
+        <img
+          src={Hello}
+          alt="Hello"
+          className="w-10 h-10 transform hover:scale-110 hover:rotate-6 hover:animate-bounce-once transition-transform duration-300 animate-bounce-once"
+        />
+        there, this is
       </div>
 
-      <header className="mb-12">
+      <header className="mb-8 animate-bounce-once" style={{ animationDelay: '0.3s' }}>
         <h1 className="text-xl font-medium">
           <span className="inline-flex items-center">
             <UnderlineToBackground
@@ -116,7 +125,39 @@ function App() {
         </p>
       </header>
 
-      <div className="mb-12">
+      {/* Social Media Links */}
+      <div className="mb-8 animate-bounce-once" style={{ animationDelay: '0.35s' }}>
+        <div className="flex gap-4">
+          <a 
+            href="https://linkedin.com/in/your-profile" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-gray-500 hover:text-black hover:underline transition-opacity duration-300"
+          >
+            <img
+              src={LinkedIn}
+              alt="LinkedIn"
+              className="w-4 h-4"
+            />
+            <span>LinkedIn</span>
+          </a>
+          <a 
+            href="https://github.com/your-username" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-gray-500 hover:text-black hover:underline transition-opacity duration-300"
+          >
+            <img
+              src={GitHub}
+              alt="GitHub"
+              className="w-4 h-4"
+            />
+            <span>GitHub</span>
+          </a>
+        </div>
+      </div>
+
+      <div className="mb-12 animate-bounce-once" style={{ animationDelay: '0.4s' }}>
         <h2 className="text-xl font-medium mb-4 hover:text-black transition-colors duration-300 cursor-default">Skills
           <img
             src={Pen}
@@ -145,7 +186,7 @@ function App() {
         </p>
       </div>
 
-      <section>
+      <section className="animate-bounce-once" style={{ animationDelay: '0.5s' }}>
         <h2 className="text-xl font-medium mb-6 hover:text-black transition-colors duration-300">Projects
           <img
             src={Project}
@@ -174,7 +215,7 @@ function App() {
           ))}
         </div>
       </section>
-      <div className="flex flex-col pt-10 relative">
+      <div className="flex flex-col pt-10 relative animate-bounce-once" style={{ animationDelay: '0.6s' }}>
         <span className="text-gray-500">Thank you,</span>
         <div className="text-4xl reenie-beanie-regular transform -rotate-2 hover:rotate-0 transition-transform duration-300">
         <span className="relative">
