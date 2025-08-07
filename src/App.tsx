@@ -66,86 +66,90 @@ function App() {
     },
   ];
 
-  return (
-    <div className={`bg-white text-black p-8 md:p-12 lg:p-24 max-w-4xl mx-auto font-sans transition-all duration-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-0 opacity-0'}`}>
-      {/* Geometric Shapes */}
-      <div className="flex mb-4">
-        {/* Rounded Square */}
-        <div className="w-4 h-4 bg-black rounded-xs mr-0.5 animate-bounce-once" />
-        {/* Circle */}
-        <div className="w-4 h-4 bg-black rounded-full animate-bounce-once" style={{ animationDelay: '0.1s' }} />
-        {/* Triangle */}
-        <div
-          className="w-4 h-4 bg-black animate-bounce-once"
-          style={{
-            clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
-            animationDelay: '0.2s'
-          }}
-        />
-      </div>
+    return (
+    <div className={`bg-white text-black p-8 md:p-12 lg:p-24 max-w-4xl mx-auto font-sans transition-all duration-500 border-l border-r border-neutral-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-0 opacity-0'}`}>
+      
+      {/* Header Section */}
+      <div className="mb-12">
+        {/* Geometric Shapes */}
+        <div className="flex mb-4">
+          <div className="w-4 h-4 bg-black rounded-xs mr-0.5 animate-bounce-once" />
+          <div className="w-4 h-4 bg-black rounded-full animate-bounce-once" style={{ animationDelay: '0.1s' }} />
+          <div
+            className="w-4 h-4 bg-black animate-bounce-once"
+            style={{
+              clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
+              animationDelay: '0.2s'
+            }}
+          />
+        </div>
 
-      {/* Intro Text */}
-      <div className="mb-2 text-gray-800 text-base font-light flex items-center gap-2 animate-slide-in">
-        <img
-          src={Hello || "/placeholder.svg"}
-          alt="Hello"
-          className="w-10 h-10 md:hover:animate-shake"
-        />
-        there, this is
-      </div>
+        {/* Intro Text */}
+        <div className="mb-2 text-gray-800 text-base font-light flex items-center gap-2 animate-slide-in">
+          <img
+            src={Hello || "/placeholder.svg"}
+            alt="Hello"
+            className="w-10 h-10 md:hover:animate-shake"
+          />
+          there, this is
+        </div>
 
-      <header className="mb-8 animate-bounce-once" style={{ animationDelay: '0.3s' }}>
-          <span className="inline-flex items-center">
-            <UnderlineToBackground targetTextColor="#f0f0f0" className="cursor-pointer" as="span">
-              <span className="mx-0 md:mx-1 select-none">
-                <TextShimmer
-                  duration={1.2}
-                  className="text-xl font-medium [--base-color:var(--color-blue-600)] [--base-gradient-color:var(--color-blue-200)] dark:[--base-color:var(--color-blue-700)] dark:[--base-gradient-color:var(--color-blue-400)]"
-                >
-                  Surya Naveen
-                </TextShimmer>
-              </span>
-            </UnderlineToBackground>
-          </span>
-          <span className="font-light text-gray-500"> — </span>
-          <span className="text-lg font-light text-gray-500 tracking-tight md:hover:tracking-wider transition-all duration-300">
-            {" "}
-            Front End Developer
-            <img
-              src={ScaleBrush || "/placeholder.svg"}
-              alt="ScaleBrush"
-              className="inline w-6 h-6 ml-2 mb-1 md:hover:animate-shake"
-            />
-          </span>
-        <p className="text-gray-500 mt-2 hover:text-gray-700 transition-colors duration-300">
-          Creating clean, minimal interfaces and web experiences.
-        </p>
-      </header>
+        {/* Name and Title */}
+        <div className="animate-bounce-once" style={{ animationDelay: '0.3s' }}>
+          <div className="flex items-center mb-2">
+            <span className="inline-flex items-center">
+              <UnderlineToBackground targetTextColor="#f0f0f0" className="cursor-pointer" as="span">
+                <span className="mx-0 md:mx-1 select-none">
+                  <TextShimmer
+                    duration={1.2}
+                    className="text-xl font-medium [--base-color:var(--color-blue-600)] [--base-gradient-color:var(--color-blue-200)] dark:[--base-color:var(--color-blue-700)] dark:[--base-gradient-color:var(--color-blue-400)]"
+                  >
+                    Surya Naveen
+                  </TextShimmer>
+                </span>
+              </UnderlineToBackground>
+            </span>
+            <span className="font-light text-gray-500"> — </span>
+            <span className="text-lg font-light text-gray-500 tracking-tight md:hover:tracking-wider transition-all duration-300">
+              Front End Developer
+              <img
+                src={ScaleBrush || "/placeholder.svg"}
+                alt="ScaleBrush"
+                className="inline w-6 h-6 ml-2 mb-1 md:hover:animate-shake"
+              />
+            </span>
+          </div>
+          <p className="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+            Creating clean, minimal interfaces and web experiences.
+          </p>
+        </div>
 
-      {/* Social Media Links */}
-      <div className="mb-8 animate-bounce-once" style={{ animationDelay: '0.35s' }}>
-        <div className="flex gap-4">
-          <a
-            href="https://linkedin.com/in/your-profile"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-gray-500 hover:text-black hover:underline transition-opacity duration-300"
-          >
-            <img src={LinkedIn || "/placeholder.svg"} alt="LinkedIn" className="w-4 h-4" />
-            <span>LinkedIn</span>
-          </a>
-          <a
-            href="https://github.com/your-username"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-gray-500 hover:text-black hover:underline transition-opacity duration-300"
-          >
-            <img src={GitHub || "/placeholder.svg"} alt="GitHub" className="w-4 h-4" />
-            <span>GitHub</span>
-          </a>
+        {/* Social Media Links */}
+        <div className="mt-8 animate-bounce-once" style={{ animationDelay: '0.35s' }}>
+          <div className="flex gap-4">
+            <a
+              href="https://linkedin.com/in/your-profile"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-gray-500 hover:text-black hover:underline transition-opacity duration-300"
+            >
+              <img src={LinkedIn || "/placeholder.svg"} alt="LinkedIn" className="w-4 h-4" />
+              <span>LinkedIn</span>
+            </a>
+            <a
+              href="https://github.com/your-username"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-gray-500 hover:text-black hover:underline transition-opacity duration-300"
+            >
+              <img src={GitHub || "/placeholder.svg"} alt="GitHub" className="w-4 h-4" />
+              <span>GitHub</span>
+            </a>
+          </div>
         </div>
       </div>
 
+      {/* Skills Section */}
       <div className="mb-12 animate-bounce-once" style={{ animationDelay: '0.4s' }}>
         <h2 className="text-xl font-medium mb-4 hover:text-black transition-colors duration-300 cursor-default">
           Skills
@@ -175,7 +179,8 @@ function App() {
         </p>
       </div>
 
-      <section className="animate-bounce-once" style={{ animationDelay: '0.5s' }}>
+      {/* Projects Section */}
+      <div className="animate-bounce-once" style={{ animationDelay: '0.5s' }}>
         <h2 className="text-xl font-medium mb-6 hover:text-black transition-colors duration-300">
           Projects
           <img
@@ -202,12 +207,19 @@ function App() {
             </div>
           ))}
         </div>
-      </section>
+      </div>
+
+      {/* Footer Section */}
       <div className="flex flex-col pt-10 relative animate-bounce-once" style={{ animationDelay: '0.6s' }}>
         <span className="text-gray-500">Thank you,</span>
         <div className="text-4xl reenie-beanie-regular transform -rotate-2 hover:rotate-0 transition-transform duration-300">
           <span className="relative select-none">
-            Suryanavv
+            <TextShimmer
+              duration={1.2}
+              className="[--base-color:var(--color-blue-600)] [--base-gradient-color:var(--color-blue-200)] dark:[--base-color:var(--color-blue-700)] dark:[--base-gradient-color:var(--color-blue-400)]"
+            >
+              Suryanavv
+            </TextShimmer>
             <svg
               className="absolute -bottom-1 left-0 w-full h-2 opacity-80"
               viewBox="0 0 100 10"
