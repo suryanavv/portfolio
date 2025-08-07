@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './App.css';
 import { TextShimmer } from '../components/text-shimmer';
 import UnderlineToBackground from '../components/underline-to-background';
@@ -10,61 +10,100 @@ import Hello from './assets/hello.svg';
 import LinkedIn from './assets/linkedin.svg';
 import GitHub from './assets/github.svg';
 
+// Static data moved outside the component to avoid re-creation on every render
+export const skillsData = [
+  { name: 'React', cursor: "url('https://cdn.simpleicons.org/react/61DAFB'), auto" },
+  { name: 'Next.js', cursor: "url('https://cdn.simpleicons.org/nextdotjs/000000'), auto" },
+  { name: 'Tailwind CSS', cursor: "url('https://cdn.simpleicons.org/tailwindcss/06B6D4'), auto" },
+  { name: 'JavaScript', cursor: "url('https://cdn.simpleicons.org/javascript/F7DF1E'), auto" },
+  { name: 'HTML', cursor: "url('https://cdn.simpleicons.org/html5/E34F26'), auto" },
+  { name: 'CSS', cursor: "url('https://cdn.simpleicons.org/css3/1572B6'), auto" },
+  { name: 'Python', cursor: "url('https://cdn.simpleicons.org/python/3776AB'), auto" },
+  { name: 'SQL', cursor: "url('https://www.svgrepo.com/show/331760/sql-database-generic.svg'), auto" },
+  { name: 'MongoDB', cursor: "url('https://cdn.simpleicons.org/mongodb/47A248'), auto" },
+  { name: 'Supabase', cursor: "url('https://cdn.simpleicons.org/supabase/3ECF8E'), auto" },
+  { name: 'Figma', cursor: "url('https://cdn.simpleicons.org/figma/000000'), auto" },
+  { name: 'Canva', cursor: "url('https://cdn.simpleicons.org/canva/00C4CC'), auto" },
+];
+
+export const projectsData = [
+  {
+    title: 'Portfolio Website',
+    desc: 'A portfolio with subtle animation visual appealing interface',
+    tech: 'Next.js, Tailwind CSS',
+  },
+  {
+    title: 'Task Manager App',
+    desc: 'Minimal todo tracker with real-time sync',
+    tech: 'React, Firebase',
+  },
+  {
+    title: 'Landing Page',
+    desc: 'SaaS landing page with modern design',
+    tech: 'HTML, Alpine.js',
+  },
+  {
+    title: 'REST API Starter',
+    desc: 'RESTful boilerplate with authentication',
+    tech: 'Node.js, Express',
+  },
+  {
+    title: 'Design System',
+    desc: 'Component library with documentation',
+    tech: 'Typescript, Storybook',
+  },
+  {
+    title: 'Blog Platform',
+    desc: 'Markdown blogging platform',
+    tech: 'Next.js, MongoDB',
+  },
+];
+
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const squareRef = useRef<HTMLDivElement>(null);
+  const circleRef = useRef<HTMLDivElement>(null);
+  const triangleRef = useRef<HTMLDivElement>(null);
+
+  const restartBounce = () => {
+    const refs = [squareRef, circleRef, triangleRef];
+    refs.forEach((ref, index) => {
+      if (ref.current) {
+        ref.current.style.animation = 'none';
+        ref.current.offsetHeight; // Trigger reflow
+        ref.current.style.animation = 'bounce-once 1s ease-in-out infinite';
+        if (index === 1) { // Circle
+          ref.current.style.animationDelay = '0.1s';
+        } else if (index === 2) { // Triangle
+          ref.current.style.animationDelay = '0.2s';
+        }
+      }
+    });
+  };
+
+  const stopBounce = () => {
+    const refs = [squareRef, circleRef, triangleRef];
+    refs.forEach((ref, index) => {
+      if (ref.current) {
+        ref.current.style.animation = 'bounce-once 1s ease-in-out';
+        if (index === 1) { // Circle
+          ref.current.style.animationDelay = '0.1s';
+        } else if (index === 2) { // Triangle
+          ref.current.style.animationDelay = '0.2s';
+        }
+      }
+    });
+  };
 
   useEffect(() => {
     document.body.style.fontFamily = 'Inter, sans-serif';
     setIsLoaded(true);
   }, []);
 
-  const skills = [
-    { name: "React", cursor: "url('https://cdn.simpleicons.org/react/61DAFB'), auto" },
-    { name: "Next.js", cursor: "url('https://cdn.simpleicons.org/nextdotjs/000000'), auto" },
-    { name: "Tailwind CSS", cursor: "url('https://cdn.simpleicons.org/tailwindcss/06B6D4'), auto" },
-    { name: "JavaScript", cursor: "url('https://cdn.simpleicons.org/javascript/F7DF1E'), auto" },
-    { name: "HTML", cursor: "url('https://cdn.simpleicons.org/html5/E34F26'), auto" },
-    { name: "CSS", cursor: "url('https://cdn.simpleicons.org/css3/1572B6'), auto" },
-    { name: "Python", cursor: "url('https://cdn.simpleicons.org/python/3776AB'), auto" },
-    { name: "SQL", cursor: "url('https://www.svgrepo.com/show/331760/sql-database-generic.svg'), auto" },
-    { name: "MongoDB", cursor: "url('https://cdn.simpleicons.org/mongodb/47A248'), auto" },
-    { name: "Supabase", cursor: "url('https://cdn.simpleicons.org/supabase/3ECF8E'), auto" },
-    { name: "Figma", cursor: "url('https://cdn.simpleicons.org/figma/000000'), auto" },
-    { name: "Canva", cursor: "url('https://cdn.simpleicons.org/canva/00C4CC'), auto" },
-  ];
+  const skills = skillsData;
 
-  const projects = [
-    {
-      title: "Portfolio Website",
-      desc: "A portfolio with subtle animation visual appealing interface",
-      tech: "Next.js, Tailwind CSS",
-    },
-    {
-      title: "Task Manager App",
-      desc: "Minimal todo tracker with real-time sync",
-      tech: "React, Firebase",
-    },
-    {
-      title: "Landing Page",
-      desc: "SaaS landing page with modern design",
-      tech: "HTML, Alpine.js",
-    },
-    {
-      title: "REST API Starter",
-      desc: "RESTful boilerplate with authentication",
-      tech: "Node.js, Express",
-    },
-    {
-      title: "Design System",
-      desc: "Component library with documentation",
-      tech: "Typescript, Storybook",
-    },
-    {
-      title: "Blog Platform",
-      desc: "Markdown blogging platform",
-      tech: "Next.js, MongoDB",
-    },
-  ];
+  const projects = projectsData;
 
     return (
     <div className={`bg-white text-black p-8 md:p-12 lg:p-24 max-w-4xl mx-auto font-sans transition-all duration-500 border-l border-r border-neutral-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-0 opacity-0'}`}>
@@ -72,10 +111,10 @@ function App() {
       {/* Header Section */}
       <div className="mb-12">
         {/* Geometric Shapes */}
-        <div className="flex mb-4">
-          <div className="w-4 h-4 bg-black rounded-xs mr-0.5 animate-bounce-once" />
-          <div className="w-4 h-4 bg-black rounded-full animate-bounce-once" style={{ animationDelay: '0.1s' }} />
-          <div
+        <div className="flex mb-4" onMouseEnter={restartBounce} onMouseLeave={stopBounce}>
+          <div ref={squareRef} className="w-4 h-4 bg-black rounded-xs mr-0.5 animate-bounce-once" />
+          <div ref={circleRef} className="w-4 h-4 bg-black rounded-full animate-bounce-once" style={{ animationDelay: '0.1s' }} />
+          <div ref={triangleRef}
             className="w-4 h-4 bg-black animate-bounce-once"
             style={{
               clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
