@@ -6,7 +6,7 @@ import type { ElementType } from "react"
 import { motion } from "motion/react"
 import type { ValueAnimationTransition } from "motion/react"
 
-import { cn } from '../src/lib/utils'
+import { cn } from '../../src/lib/utils'
 
 interface UnderlineProps {
   /**
