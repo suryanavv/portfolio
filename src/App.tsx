@@ -104,12 +104,12 @@ function App() {
   const skills = skillsData;
 
   const projects = projectsData;
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* New outer div for centering with gaps */}
-        <div className={`max-w-4xl mx-auto py-24 px-8 text-black font-sans transition-all duration-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-0 opacity-0'}`}>
-          
+    <div className="min-h-screen relative overflow-hidden visible-grid">
+      {/* Content Container */}
+      <div className="relative z-10">
+        <div className={`max-w-4xl mx-auto px-8 py-12 md:py-24 text-black font-sans transition-all duration-500 rounded-xl my-8 mx-4 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-0 opacity-0'}`}>
+
           {/* Header Section */}
           <div className="mb-12">
             {/* Geometric Shapes */}
@@ -279,6 +279,7 @@ function App() {
             </div>
           </div>
         </div>
+      </div>
     </div>
   );
 }
