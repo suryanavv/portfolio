@@ -133,26 +133,32 @@ function App() {
     
           {/* Content */}
           <div className="relative z-10 h-screen overflow-y-auto no-scrollbar">
-        <div className={`max-w-3xl mx-auto px-6 md:px-10 py-14 md:py-24 text-black transition-all duration-500 my-6 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`max-w-3xl mx-auto px-6 md:px-10 py-10 md:py-20 text-black transition-all duration-500 my-6 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
 
           {/* 1. Hello welcome note */}
-          <div className="mb-10">
-            <div className="flex items-center gap-2 text-sm text-zinc-700 tracking-tight animate-slide-in" onMouseEnter={restartBounce} onMouseLeave={stopBounce}>
-              <div ref={squareRef} className="w-3 h-3 bg-black rounded-[3px] mr-0.5 animate-bounce-once" />
-              <div ref={circleRef} className="w-3 h-3 bg-black rounded-full animate-bounce-once" style={{ animationDelay: '0.1s' }} />
-              <div ref={triangleRef} className="w-3 h-3 bg-black animate-bounce-once" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animationDelay: '0.2s' }} />
-              <img src={Hello} alt="Hello" className="w-6 h-6 ml-2 md:hover:animate-shake" />
+          <div className="mb-4 flex flex-col gap-2">
+            <div className="flex items-center text-sm text-zinc-700 tracking-tight animate-slide-in" onMouseEnter={restartBounce} onMouseLeave={stopBounce}>
+              <div ref={squareRef} className="w-3.5 h-3.5 bg-black rounded-[3px] mr-1 animate-bounce-once" />
+              <div ref={circleRef} className="w-3.5 h-3.5 bg-black rounded-full mr-0.5 animate-bounce-once" style={{ animationDelay: '0.1s' }} />
+              <div ref={triangleRef} className="w-3.5 h-3.5 bg-black animate-bounce-once" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animationDelay: '0.2s' }} />
+            </div>
+            <div className="flex items-center gap-2 text-zinc-700 tracking-tight animate-slide-in">
+              <span className="flex items-center text-2xl md:hover:animate-shake"><img src={Hello} alt="Hello" className="w-12 h-12" />👋</span>
               <span>Welcome, glad you’re here.</span>
             </div>
+            {/* <span><span className="reenie-beanie-regular text-black select-none md:hover:animate-shake">Hello</span>Welcome, glad you’re here.</span> */}
+            {/* <img src={Hello} alt="Hello" className="w-6 h-6 ml-2 md:hover:animate-shake" /> */}
+            {/* <span>Welcome, glad you’re here.</span> */}
+          
           </div>
 
           {/* 2. Name - role tag */}
-          <header className="mb-12">
-            <h1 className="font-editorial-ultra text-[44px] sm:text-[56px] md:text-[72px] leading-[0.95] text-black select-none">
+          <header className='mb-8'>
+            <h1 className="font-editorial-ultralight text-[44px] sm:text-[56px] md:text-[72px] leading-[0.95] text-black select-none">
               Surya Naveen
             </h1>
             <div className="mt-2 inline-flex items-center gap-2 text-zinc-600">
-              <UnderlineToBackground targetTextColor="#ffffff" className="px-2 py-0.5 rounded-sm">
+              <UnderlineToBackground targetTextColor="#ffffff" className="py-0.5 rounded-sm">
                 <span className="uppercase tracking-wider text-xs">Front-end Developer</span>
               </UnderlineToBackground>
               <img src={ScaleBrush} alt="" className="w-5 h-5 md:hover:animate-shake" />

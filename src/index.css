@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Reenie+Beanie&display=swap');
 @import "tailwindcss";
 
+/* PP Editorial New Font Faces */
 @font-face {
   font-family: "PPEditorialNew";
   src: url('./assets/fonts/PPEditorialNew-Ultralight.otf') format('opentype');
@@ -8,7 +9,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "PPEditorialNew";
   src: url('./assets/fonts/PPEditorialNew-UltralightItalic.otf') format('opentype');
@@ -16,7 +16,20 @@
   font-style: italic;
   font-display: swap;
 }
-
+@font-face {
+  font-family: "PPEditorialNew";
+  src: url('./assets/fonts/PPEditorialNew-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PPEditorialNew";
+  src: url('./assets/fonts/PPEditorialNew-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
 @font-face {
   font-family: "PPEditorialNew";
   src: url('./assets/fonts/PPEditorialNew-Regular.otf') format('opentype');
@@ -24,13 +37,118 @@
   font-style: normal;
   font-display: swap;
 }
-
+@font-face {
+  font-family: "PPEditorialNew";
+  src: url('./assets/fonts/PPEditorialNew-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PPEditorialNew";
+  src: url('./assets/fonts/PPEditorialNew-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PPEditorialNew";
+  src: url('./assets/fonts/PPEditorialNew-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PPEditorialNew";
+  src: url('./assets/fonts/PPEditorialNew-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PPEditorialNew";
+  src: url('./assets/fonts/PPEditorialNew-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 @font-face {
   font-family: "PPEditorialNew";
   src: url('./assets/fonts/PPEditorialNew-Ultrabold.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
+}
+@font-face {
+  font-family: "PPEditorialNew";
+  src: url('./assets/fonts/PPEditorialNew-UltraboldItalic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Font utility classes for PP Editorial New */
+.font-editorial-ultralight {
+  font-family: "PPEditorialNew", serif;
+  font-weight: 200;
+  font-style: normal;
+  letter-spacing: -0.02em;
+}
+.font-editorial-ultralight-italic {
+  font-family: "PPEditorialNew", serif;
+  font-weight: 200;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+.font-editorial-light {
+  font-family: "PPEditorialNew", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.font-editorial-light-italic {
+  font-family: "PPEditorialNew", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+.font-editorial-regular {
+  font-family: "PPEditorialNew", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.font-editorial-italic {
+  font-family: "PPEditorialNew", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+.font-editorial-medium {
+  font-family: "PPEditorialNew", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.font-editorial-medium-italic {
+  font-family: "PPEditorialNew", serif;
+  font-weight: 500;
+  font-style: italic;
+}
+.font-editorial-bold {
+  font-family: "PPEditorialNew", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.font-editorial-bold-italic {
+  font-family: "PPEditorialNew", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+.font-editorial-ultrabold {
+  font-family: "PPEditorialNew", serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.font-editorial-ultrabold-italic {
+  font-family: "PPEditorialNew", serif;
+  font-weight: 800;
+  font-style: italic;
 }
 
 body {
@@ -39,24 +157,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 .reenie-beanie-regular {
   font-family: "Reenie Beanie", cursive;
   font-weight: 400;
   font-style: normal;
-}
-
-.font-editorial-ultra {
-  font-family: "PPEditorialNew", serif;
-  font-weight: 200;
-  letter-spacing: -0.02em;
-}
-
-.font-editorial-regular {
-  font-family: "PPEditorialNew", serif;
-  font-weight: 400;
 }
 
 /* App.css or equivalent */
@@ -88,5 +194,4 @@ body {
     0% { transform: translateX(-10px); opacity: 0; }
     100% { transform: translateX(0); opacity: 1; }
   }
-
 }
