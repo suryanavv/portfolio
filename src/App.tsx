@@ -101,12 +101,38 @@ function App() {
 
   const projects = projectsData;
   return (
-    <div className="min-h-screen relative overflow-hidden visible-grid">
-      {/* Ambient gradient layer */}
-      <div className="ambient-gradient" />
-
-      {/* Content */}
-      <div className="relative z-10">
+        <div className="relative h-screen w-full overflow-hidden">
+          {/* Background image */}
+          <picture className="fixed inset-0 h-screen w-screen overflow-hidden opacity-100 pointer-events-none">
+            <source
+              type="image/webp"
+              srcSet="
+                https://persistent.oaistatic.com/burrito-nux/640.webp 640w,
+                https://persistent.oaistatic.com/burrito-nux/1280.webp 1280w,
+                https://persistent.oaistatic.com/burrito-nux/1920.webp 1920w
+              "
+            />
+            <img
+              className="absolute inset-0 h-full w-full scale-[1.02] object-cover opacity-50 blur-2xl"
+              alt=""
+              aria-hidden="true"
+              src="https://persistent.oaistatic.com/burrito-nux/640.webp"
+              srcSet="
+                https://persistent.oaistatic.com/burrito-nux/640.webp 640w,
+                https://persistent.oaistatic.com/burrito-nux/1280.webp 1280w,
+                https://persistent.oaistatic.com/burrito-nux/1920.webp 1920w
+              "
+              sizes="100vw"
+              loading="eager"
+              fetchPriority="high"
+            />
+          </picture>
+    
+          {/* Gradient overlay */}
+          <div className="fixed inset-0 h-screen w-screen bg-gradient-to-b from-transparent to-white pointer-events-none"></div>
+    
+          {/* Content */}
+          <div className="relative z-10 h-screen overflow-y-auto no-scrollbar">
         <div className={`max-w-3xl mx-auto px-6 md:px-10 py-14 md:py-24 text-black transition-all duration-500 my-6 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
 
           {/* 1. Hello welcome note */}
@@ -207,7 +233,7 @@ function App() {
           </footer>
         </div>
       </div>
-    </div>
+        </div>
   );
 }
 
