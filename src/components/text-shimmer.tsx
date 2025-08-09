@@ -1,6 +1,6 @@
 "use client"
 import React, { useMemo, type JSX } from 'react';
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { cn } from '../../src/lib/utils';
 
 export type TextShimmerProps = {

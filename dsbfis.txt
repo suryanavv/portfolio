@@ -1,9 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
-import type React from 'react';
 import './App.css';
 import UnderlineToBackground from './components/underline-to-background';
 import MediaBetweenText from './components/media-between-text';
-import type { MediaBetweenTextRef } from './components/media-between-text';
 import ScaleBrush from './assets/scale-brush.svg';
 import Pen from './assets/pen.svg';
 import Project from './assets/project.svg';
@@ -65,9 +63,6 @@ function App() {
   const squareRef = useRef<HTMLDivElement>(null);
   const circleRef = useRef<HTMLDivElement>(null);
   const triangleRef = useRef<HTMLDivElement>(null);
-  const mediaBetweenTextRef = useRef<MediaBetweenTextRef>(null);
-  const mediaBetweenTextWrapRef = useRef<HTMLDivElement>(null);
-  const [isMediaOpen, setIsMediaOpen] = useState(false);
 
   const restartBounce = () => {
     const refs = [squareRef, circleRef, triangleRef];
@@ -115,34 +110,7 @@ function App() {
     mq.addEventListener('change', update);
     return () => mq.removeEventListener('change', update);
   }, []);
-  const targetSize = isSmUp ? '128px' : '64px';
-
-  useEffect(() => {
-    if (isSmUp) return;
-    const onDocClick = (e: MouseEvent) => {
-      if (
-        mediaBetweenTextWrapRef.current &&
-        !mediaBetweenTextWrapRef.current.contains(e.target as Node)
-      ) {
-        mediaBetweenTextRef.current?.reset();
-        setIsMediaOpen(false);
-      }
-    };
-    document.addEventListener('click', onDocClick);
-    return () => document.removeEventListener('click', onDocClick);
-  }, [isSmUp]);
-
-  const handleMediaToggle = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isSmUp) return; // hover on desktop/tablet
-    e.stopPropagation();
-    if (isMediaOpen) {
-      mediaBetweenTextRef.current?.reset();
-      setIsMediaOpen(false);
-    } else {
-      mediaBetweenTextRef.current?.animate();
-      setIsMediaOpen(true);
-    }
-  };
+  const targetSize = isSmUp ? '64px' : '48px';
   return (
         <div className="relative h-screen w-full overflow-hidden">
           {/* Background image */}
@@ -203,15 +171,14 @@ function App() {
             <h1 className="font-editorial-ultralight text-[44px] sm:text-[56px] md:text-[72px] leading-[0.95] text-black select-none">
               Surya Naveen
             </h1>
-            <div ref={mediaBetweenTextWrapRef} onClick={handleMediaToggle} className="select-none">
             <MediaBetweenText
                 firstText="{"
                 secondText="}"
                 mediaUrl={ProfileImage}
                 mediaType="image"
-                triggerType={isSmUp ? 'hover' : 'ref'}
-                mediaContainerClassName="w-full h-16 sm:h-32 overflow-hidden rounded-full"
-                className="cursor-pointer text-4xl sm:text-7xl text-black font-light flex flex-row items-center"
+                triggerType="hover"
+                mediaContainerClassName="w-full h-12 sm:h-16 overflow-hidden mx-1 sm:mx-2 rounded-full"
+                className="cursor-pointer text-7xl text-black font-light flex flex-row items-center"
                 animationVariants={{
                   initial: { width: 0 },
                   animate: {
@@ -219,9 +186,7 @@ function App() {
                     transition: { duration: 0.4, type: "spring", bounce: 0 },
                   },
                 }}
-              ref={mediaBetweenTextRef}
               />
-              </div>
               </div>
             <div className="mt-2 inline-flex items-center gap-2 text-zinc-600">
               <UnderlineToBackground targetTextColor="#ffffff" className="py-0.5 rounded-sm">
