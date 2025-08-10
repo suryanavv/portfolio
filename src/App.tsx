@@ -68,6 +68,7 @@ function App() {
   const mediaBetweenTextRef = useRef<MediaBetweenTextRef>(null);
   const mediaBetweenTextWrapRef = useRef<HTMLDivElement>(null);
   const [isMediaOpen, setIsMediaOpen] = useState(false);
+  const [hintDone, setHintDone] = useState(false);
 
   const restartBounce = () => {
     const refs = [squareRef, circleRef, triangleRef];
@@ -116,6 +117,26 @@ function App() {
     return () => mq.removeEventListener('change', update);
   }, []);
   const targetSize = isSmUp ? '128px' : '64px';
+
+  // On initial load, briefly open then close the media to hint its presence
+  useEffect(() => {
+    const hasRunRef = { current: false } as { current: boolean };
+    if (hasRunRef.current) return;
+    hasRunRef.current = true;
+    const openTO = window.setTimeout(() => {
+      mediaBetweenTextRef.current?.animate();
+      setIsMediaOpen(true);
+    }, 400);
+    const closeTO = window.setTimeout(() => {
+      mediaBetweenTextRef.current?.reset();
+      setIsMediaOpen(false);
+      setHintDone(true);
+    }, 1400);
+    return () => {
+      window.clearTimeout(openTO);
+      window.clearTimeout(closeTO);
+    };
+  }, []);
 
   useEffect(() => {
     if (isSmUp) return;
@@ -205,11 +226,11 @@ function App() {
             </h1>
             <div ref={mediaBetweenTextWrapRef} onClick={handleMediaToggle} className="select-none">
             <MediaBetweenText
-                firstText="{"
-                secondText="}"
+                firstText="<"
+                secondText=">"
                 mediaUrl={ProfileImage}
                 mediaType="image"
-                triggerType={isSmUp ? 'hover' : 'ref'}
+                triggerType={isSmUp ? (hintDone ? 'hover' : 'ref') : 'ref'}
                 mediaContainerClassName="w-full h-16 sm:h-32 overflow-hidden rounded-full"
                 className="cursor-pointer text-4xl sm:text-7xl text-black font-light flex flex-row items-center"
                 animationVariants={{
